@@ -1,5 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 
 using namespace std;
 
@@ -5948,6 +5951,8 @@ jmp_cmp_string:
     return -1;
 }
 
+char working_dir[1024];
+
 bool parseTokens(Tokens &token_list)
 {
    string cur_action = "";
@@ -5961,7 +5966,12 @@ bool parseTokens(Tokens &token_list)
    pnt_list.Initialize();
    func_list.Initialize();
 
-   file_stm.open("F:\\Code.cpp");  // For now generate in F Drive.
+   getcwd(working_dir,sizeof(working_dir)); // Get the current working directory.
+   string app_dir(working_dir);
+
+   app_dir += "\\Code.cpp";
+
+   file_stm.open(app_dir.c_str());  // For now generate in F Drive.
 
    file_stm << "#include<iostream>" << endl << "#include<conio.h>" << endl << "#include<Assembly++.hpp>" << endl << endl << "using namespace std;" << endl << endl; // Generate include statements.
 
@@ -6743,6 +6753,18 @@ int main()
             // Parse Tokens and Generate Code
             if (parseTokens(token_list))
             {
+                 string command(working_dir);
+
+                 command += "\\gcc\\g++ -o ";
+                 command += working_dir;
+                 command += "\\Code.exe -I ";
+                 command += working_dir;
+                 command += " ";
+                 command += working_dir;
+                 command += "\\Code.cpp";
+
+                 system(command.c_str());
+
                  cout << endl << endl << "Compile Succesfull...";
             }
             else

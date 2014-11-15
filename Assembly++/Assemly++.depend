@@ -1,5 +1,8 @@
 # depslib dependency file v1.0
-1414398796 source:f:\projects\c++\assemly++\main.cpp
+1415984326 source:f:\projects\c++\assemly++\main.cpp
 	<iostream>
 	<fstream>
+	<unistd.h>
+	<stdlib.h>
+	<string.h>
 
