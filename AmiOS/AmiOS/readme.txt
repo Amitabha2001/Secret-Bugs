@@ -1,29 +1,22 @@
-========================================================================
-    MAKEFILE PROJECT : AmiOS Project Overview
-========================================================================
-
-AppWizard has created this AmiOS project for you.  
-
-This file contains a summary of what you will find in each of the files that
-make up your AmiOS project.
-
-
-AmiOS.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard. 
-    It contains information about the version of Visual C++ that generated the file, and 
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-AmiOS.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
-
-This project allows you to build/clean/rebuild from within Visual Studio by calling the commands you have input 
-in the wizard. The build command can be nmake or any other tool you use.
-
-This project does not contain any files, so there are none displayed in Solution Explorer.
-
-/////////////////////////////////////////////////////////////////////////////
+ ============================================ AmiOS ===========================================
+ 
+ This is a simple project with a incomplete kernel , the kernel has got some bugs with process but you can easily fix it .
+ Features include a fully tested working file system (FATX which i made myself) , a mono-tasking kernel , a new style memory manager .
+ This project is for educational purposes only .
+ 
+ The author is not responsible for any problem regrading this Operating System.
+ 
+ Author : Amitabha Roy
+ Purpose : Educational Practise Project.
+ 
+ Tools
+ =====
+ 1. MASM Assembler 6.15 .
+ 2. Visual C++ 1.52 .
+ 3. Netwide Assembler .
+ 4. Bochs .
+ 
+ To build the kernel , run the make.bat and remember to change the path to your specific paths of the tools.
+ 
+ Enjoy ! , if possible , add some more features to the source and show that to me.
+ 
