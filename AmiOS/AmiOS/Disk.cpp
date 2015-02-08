@@ -31,7 +31,7 @@ static struct FAT_File * resizeArray(int32_t newsize)
 	
 	mem_block.block_address = (int) fat_files;
 	mem_block.block_ptr = (void *) fat_files;
-	mem_block.tot_bytes = file_count * sizeof(FAT_File);
+	mem_block.tot_bytes = newsize;
 
 	mem_manager.kfree(mem_block);
 	file_count++;
