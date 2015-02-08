@@ -8,7 +8,7 @@ Process process_create(String file_nm,byte privilage)
 	Process newProcess;
 	
 	FAT_File file_handle = file_sys_handle.getFile(file_nm);
-	int32_t cur_adr = 1;
+	int32_t cur_adr = 0x001;
 	int32_t _seg = 0x2000;
 	
 	if (file_handle.file_name[0] != 0)
@@ -31,8 +31,8 @@ Process process_create(String file_nm,byte privilage)
 					mov ax , _seg ;
 					mov es , ax ;
 
-					mov al , cur_dat ;
 					mov bx , cur_adr ;
+					mov al , cur_dat ;
 					mov byte ptr es:[bx] , al ;
 
 					pop es;
@@ -71,7 +71,7 @@ Process process_create(String file_nm,byte privilage)
 		newProcess.pstack.ds = _seg;
 		newProcess.pstack.ss = _seg;
 		newProcess.pstack.es = _seg;
-		newProcess.pstack.bp = newProcess.pstack.sp = 0x9000;
+		newProcess.pstack.bp = newProcess.pstack.sp = 0x8000;
 		
 		return newProcess;
 	}
@@ -92,7 +92,7 @@ RESULT process_start(Process process_obj)
 
 		int32_t basep = process_obj.pstack.bp;
 		int32_t code_seg = process_obj.pstack.cs;
-			
+		
 		__asm
 		{ 
 			cli ;
@@ -101,22 +101,13 @@ RESULT process_start(Process process_obj)
 			mov ax , code_seg ;
 			mov word ptr [jmp_val + 2] , ax ;
 			mov dx , basep ;
-			mov ax , code_seg ;
-			mov ss , ax ;
 			mov bp , dx ;
 			mov sp , bp ;
 
 			sti ;
 
-			
-			push cs ;
-			push back ;
-			push word ptr [jmp_val + 2] ;
-			push word ptr [jmp_val] ;
-
-			retf ;
+			jmp dword ptr [jmp_val] ;
 		};
-		back:
 
 		return res;
 	}

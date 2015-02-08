@@ -1,4 +1,4 @@
- ============================================ AmiOS ===========================================
+============================================ AmiOS ===========================================
  
  This is a simple project with a incomplete kernel , the kernel has got some bugs with process but you can easily fix it .
  Features include a fully tested working file system (FATX which i made myself) , a mono-tasking kernel , a new style memory manager .
@@ -19,4 +19,3 @@
  To build the kernel , run the make.bat and remember to change the path to your specific paths of the tools.
  
  Enjoy ! , if possible , add some more features to the source and show that to me.
- 

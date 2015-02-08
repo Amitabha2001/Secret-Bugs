@@ -1,20 +1,24 @@
 [bits 16]
  
-cli ;
+org 0x1
+
+cli 
 
  mov ax , cs ;
  mov ds , ax ;
  mov es , ax ;
- 
-sti ;
- 
+ mov ss , ax ;
+
+sti
+
  mov bx , data ;
  call print_string ;
 
  mov bx , ver ;
  call print_string ;
 
- retf ;
+
+ jmp $ ;
 
 print_string:
     pusha;
@@ -33,7 +37,7 @@ print_string:
 	  int 0x10 ;
     popa;
 
-	ret ;
+ret ;
 
 data: 
 	db 'Welcome to AmiOS.', 0 ;

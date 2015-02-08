@@ -1,44 +1,43 @@
-﻿Build started 2/3/2015 3:19:54 PM.
+﻿Build started 2/8/2015 3:03:58 PM.
 Project "C:\AmiOS\AmiOS\AmiOS.vcxproj" on node 2 (build target(s)).
 Build:
   Make.bat
+  ------------------- AmiOS Build System --------------------
   Microsoft (R) Macro Assembler Version 6.14.8444
   Copyright (C) Microsoft Corp 1981-1997.  All rights reserved.
   
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
-  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
-  
-  00000000000i[      ] reading configuration from C:\AmiOS\AmiOS\Build\boschsrc.bxrc
-  ------------------- AmiOS Build System --------------------
    Assembling: C:\AmiOS\AmiOS\KernelEntry.asm
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\kernel.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\display.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\disk.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\string.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\system.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\memory.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\kernel.cpp
+  Microsoft (R) C/C++ Optimizing Compiler Version 8.00c    
+  Copyright (c) Microsoft Corp 1984-1993. All rights reserved.
+  
   c:\amios\amios\process.cpp
           1 file(s) copied.
           1 file(s) copied.
@@ -55,6 +54,7 @@ Build:
 LINK : warning L4045: name of output file is 'c:KernelEntry.com'
 LINK : warning L4055: start address not equal to 0x100 for /TINY
           1 file(s) copied.
+  00000000000i[      ] reading configuration from C:\AmiOS\AmiOS\Build\boschsrc.bxrc
   00000000000i[      ] reading configuration from C:\AmiOS\AmiOS\Build\boschsrc.bxrc
   00000000000i[      ] installing win32 module as the Bochs GUI
   00000000000i[      ] Bochs x86 Emulator 2.6.6
@@ -92,7 +92,7 @@ LINK : warning L4055: start address not equal to 0x100 for /TINY
   00000000000i[      ]   SB16 support: yes
   00000000000i[      ]   USB support: yes
   00000000000i[      ]   VGA extension support: vbe cirrus voodoo
-  00000000000i[MEM0  ] allocated memory at 07110020. after alignment, vector=07111000
+  00000000000i[MEM0  ] allocated memory at 07230020. after alignment, vector=07231000
   00000000000i[MEM0  ] 32.00MB
   00000000000i[MEM0  ] mem block size = 0x00100000, blocks=32
   00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('C:\Bochs/BIOS-bochs-latest')
@@ -103,7 +103,7 @@ LINK : warning L4055: start address not equal to 0x100 for /TINY
   00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
   00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
   00000000000i[CMOS  ] Using local time for initial clock
-  00000000000i[CMOS  ] Setting initial clock to: Tue Feb 03 15:19:58 2015 (time0=1422956998)
+  00000000000i[CMOS  ] Setting initial clock to: Sun Feb 08 15:04:01 2015 (time0=1423388041)
   00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
   00000000000i[DMA   ] channel 4 used by cascade
   00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -253,32 +253,32 @@ LINK : warning L4055: start address not equal to 0x100 for /TINY
   00002404700i[BXVGA ] VBE known Display Interface b0c5
   00002407624i[VBIOS ] VBE Bios $Id: vbe.c,v 1.64 2011/07/19 18:25:05 vruppert Exp $
   00014918918i[BIOS  ] Booting from 0000:7c00
-  00332804000p[WINGUI] >>PANIC<< POWER button turned off.
-  00332804000i[CPU0  ] CPU is in real mode (active)
-  00332804000i[CPU0  ] CS.mode = 16 bit
-  00332804000i[CPU0  ] SS.mode = 16 bit
-  00332804000i[CPU0  ] EFER   = 0x00000000
-  00332804000i[CPU0  ] | EAX=00008fd8  EBX=0000288c  ECX=00090000  EDX=00000000
-  00332804000i[CPU0  ] | ESP=00008fa4  EBP=00008fae  ESI=000e8fd8  EDI=00008fb4
-  00332804000i[CPU0  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf SF zf af PF CF
-  00332804000i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
-  00332804000i[CPU0  ] |  CS:0000( 0004| 0|  0) 00000000 0000ffff 0 0
-  00332804000i[CPU0  ] |  DS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-  00332804000i[CPU0  ] |  SS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-  00332804000i[CPU0  ] |  ES:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-  00332804000i[CPU0  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-  00332804000i[CPU0  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-  00332804000i[CPU0  ] | EIP=00002145 (00002145)
-  00332804000i[CPU0  ] | CR0=0x60000010 CR2=0x00000000
-  00332804000i[CPU0  ] | CR3=0x00000000 CR4=0x00000000
-  00332804000i[CPU0  ] 0x0000000000002145>> add word ptr ss:[bp-6], 0x0001 : 8346FA01
-  00332804000i[CMOS  ] Last time is 1422957081 (Tue Feb 03 15:21:21 2015)
-  00332804000i[      ] restoring default signal behavior
+  00274452000p[WINGUI] >>PANIC<< POWER button turned off.
+  00274452000i[CPU0  ] CPU is in real mode (active)
+  00274452000i[CPU0  ] CS.mode = 16 bit
+  00274452000i[CPU0  ] SS.mode = 16 bit
+  00274452000i[CPU0  ] EFER   = 0x00000000
+  00274452000i[CPU0  ] | EAX=00002000  EBX=00000045  ECX=00090000  EDX=00008000
+  00274452000i[CPU0  ] | ESP=00008000  EBP=00008000  ESI=000e8fce  EDI=00008fb4
+  00274452000i[CPU0  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf ZF af PF cf
+  00274452000i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
+  00274452000i[CPU0  ] |  CS:2000( 0004| 0|  0) 00020000 0000ffff 0 0
+  00274452000i[CPU0  ] |  DS:2000( 0005| 0|  0) 00020000 0000ffff 0 0
+  00274452000i[CPU0  ] |  SS:2000( 0005| 0|  0) 00020000 0000ffff 0 0
+  00274452000i[CPU0  ] |  ES:2000( 0005| 0|  0) 00020000 0000ffff 0 0
+  00274452000i[CPU0  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+  00274452000i[CPU0  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+  00274452000i[CPU0  ] | EIP=00000017 (00000017)
+  00274452000i[CPU0  ] | CR0=0x60000010 CR2=0x00000000
+  00274452000i[CPU0  ] | CR3=0x00000000 CR4=0x00000000
+  00274452000i[CPU0  ] 0x0000000000000017>> jmp .-2 (0x00020017) : EBFE
+  00274452000i[CMOS  ] Last time is 1423388109 (Sun Feb 08 15:05:09 2015)
+  00274452000i[      ] restoring default signal behavior
   ========================================================================
   Bochs is exiting with the following message:
   [WINGUI] POWER button turned off.
   ========================================================================
-  00332804000i[SIM   ] quit_sim called with exit code 1
+  00274452000i[SIM   ] quit_sim called with exit code 1
   ========================================================================
                          Bochs x86 Emulator 2.6.6
                  Built from SVN snapshot on June 15, 2014
@@ -289,4 +289,4 @@ Done Building Project "C:\AmiOS\AmiOS\AmiOS.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:15.19
+Time Elapsed 00:00:11.82
