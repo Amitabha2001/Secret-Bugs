@@ -1,8 +1,9 @@
 #include "Process.h"
+#include "Display.h"
 
 int jmp_val = 0;
 
-Process process_create(String file_nm,byte privilage)
+Process process_create(String file_nm)
 {
 	FileSystem file_sys_handle;
 	Process newProcess;
@@ -65,13 +66,11 @@ Process process_create(String file_nm,byte privilage)
 			}
 		}
 
-		newProcess.privilage = privilage;
 		newProcess.isReady = TRUE;
 		newProcess.pstack.cs = _seg;
 		newProcess.pstack.ds = _seg;
 		newProcess.pstack.ss = _seg;
 		newProcess.pstack.es = _seg;
-		newProcess.pstack.bp = newProcess.pstack.sp = 0x8000;
 		
 		return newProcess;
 	}
@@ -82,17 +81,12 @@ Process process_create(String file_nm,byte privilage)
 	}
 }
 
-RESULT process_start(Process process_obj)
+extern "C" bool process_handler(Process process_obj)
 {
-	RESULT res;
-
 	if (process_obj.isReady == TRUE)
 	{
-		res.__val = TRUE;
-
-		int32_t basep = process_obj.pstack.bp;
 		int32_t code_seg = process_obj.pstack.cs;
-		
+	
 		__asm
 		{ 
 			cli ;
@@ -100,19 +94,24 @@ RESULT process_start(Process process_obj)
 			mov word ptr [jmp_val] , 0x1 ;
 			mov ax , code_seg ;
 			mov word ptr [jmp_val + 2] , ax ;
-			mov dx , basep ;
-			mov bp , dx ;
-			mov sp , bp ;
 
 			sti ;
 
+			push cs ;
+			mov ax , offset kcall ;
+			push ax ;
+
 			jmp dword ptr [jmp_val] ;
+kcall:
+			cli ;
+			mov ax , cs ;
+			mov ds , ax ;
+			mov es , ax ;
+			sti ;
 		};
 
-		return res;
+		return TRUE;
 	}
 
-	res.__val = FALSE;
-
-	return res;
+	return FALSE;
 }

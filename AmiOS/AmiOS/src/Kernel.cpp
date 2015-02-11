@@ -87,11 +87,11 @@ extern "C" void kmain()
 
 	string_handle.str = "Shellii";
 
-	Process newProcess = process_create(string_handle,PROCESS_PRIVILAGE_HIGH);
+	Process newProcess = process_create(string_handle);
 
 	if (newProcess.isReady == TRUE)
 	{
-		if (SUCCES(process_start(newProcess)) == FALSE)
+		if (process_start(newProcess) == FALSE)
 		{
 			string_handle.str = "Cannot start Shell!";
 			vdu_handle.printf(string_handle,0);
@@ -106,6 +106,6 @@ extern "C" void kmain()
 
 	// Shut down PC.
 wait_forever:
-		
+
 	goto wait_forever;
 }

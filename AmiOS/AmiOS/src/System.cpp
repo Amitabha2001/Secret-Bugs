@@ -1,4 +1,5 @@
 #include "System.h"
+#include "Display.h"
 
 void System::sys_delay()
 {
@@ -9,7 +10,22 @@ void System::sys_delay()
 
 void System::sys_shutdown()
 {
+	if (SUCCES(sys_checkAPM( )) == TRUE)
+	{
 
+	}
+	else
+	{
+		Screen screen_handle;
+
+		screen_handle.printf("Shut down requires direct power off . You data is saved properly.",0);
+
+		__asm
+		{
+			cli ;
+			hlt ;
+		}
+	}
 }
 
 RESULT System::sys_checkAPM( )

@@ -31,7 +31,7 @@ static struct FAT_File * resizeArray(int32_t newsize)
 	
 	mem_block.block_address = (int) fat_files;
 	mem_block.block_ptr = (void *) fat_files;
-	mem_block.tot_bytes = newsize;
+	mem_block.tot_bytes = file_count * sizeof(FAT_File);
 
 	mem_manager.kfree(mem_block);
 	file_count++;
@@ -454,6 +454,33 @@ FAT_File FileSystem::getFile(String file_nm)
 
 byte FileSystem::readByte(String file_nm,int32_t byte_pos)
 {
+	FAT_File cur_file = getFile(file_nm);
+
+	if (cur_file.file_name[0] != 0)
+	{
+		int32_t adder = 0;
+		int32_t byte_cnt = 0;
+		FAT_Clustor clus = getClustor(cur_file.clustor_start);
+
+re:
+		for(byte_cnt = 0;byte_cnt < 510;byte_cnt++)
+		{
+			if (byte_cnt + adder == (byte_pos - 1))
+			{
+				return clus.data_bytes[byte_cnt];
+			}
+		}
+
+		byte_cnt = 0;
+		adder += 510;
+
+		if (clus.clustor_record.end == FALSE)
+		{
+			clus = getClustor(clus.clustor_record.ptr);
+			goto re;
+		}
+	}
+
 	return 0;
 }
 
@@ -461,12 +488,70 @@ RESULT FileSystem::createFile(FAT_File file_handle)
 {
 	RESULT res;
 
+	fat_files = resizeArray(sizeof(FAT_File) * (file_count + 1));
+
+	fat_files[file_count] = file_handle;
+
+	file_count++;
+
+	res.__val = TRUE;
+
 	return res;
 }
 
 RESULT FileSystem::deleteFile(String file_nm)
 {
 	RESULT res;
+
+	int32_t cnt = 0;
+	int32_t f_cnt = -1;
+
+	for(cnt = 0;cnt < file_count;cnt++)
+	{
+		int32_t c = 0;
+		bool succes = TRUE;
+
+		for(c = 0;c < 7;c++)
+		{
+			if (fat_files[cnt].file_name[c] != file_nm.str[c])
+			{
+				succes = FALSE;
+				break;
+			}
+		}
+
+		if (succes == TRUE)
+		{
+			f_cnt = cnt;
+			break;
+		}
+	}
+	
+	if (f_cnt == -1)
+	{
+		res.__val = FALSE;
+	}
+	else
+	{
+		res.__val = TRUE;
+
+		int32_t i = 0;
+
+		for(cnt = 0;cnt < file_count - 1;cnt++)
+		{
+			if (cnt == f_cnt)
+			{
+				fat_files[cnt] = fat_files[cnt + 1];
+				i = 1;
+			}
+			else
+			{
+				fat_files[cnt] = fat_files[cnt + i];
+			}
+		}
+
+		file_count--;
+	}
 
 	return res;
 }

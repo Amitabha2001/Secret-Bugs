@@ -7,7 +7,6 @@ cli
  mov ax , cs ;
  mov ds , ax ;
  mov es , ax ;
- mov ss , ax ;
 
 sti
 
@@ -16,9 +15,8 @@ sti
 
  mov bx , ver ;
  call print_string ;
-
-
- jmp $ ;
+ 
+ retf ; 
 
 print_string:
     pusha;
