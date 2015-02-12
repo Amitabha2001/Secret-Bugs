@@ -105,7 +105,10 @@ extern "C" void kmain()
 	}
 
 	// Shut down PC.
-wait_forever:
-
-	goto wait_forever;
+	vdu_handle.printf("Shutting down computer . Please disable power supply to stop.",0);
+	__asm
+	{
+		cli ;
+		hlt ;
+	};
 }

@@ -94,6 +94,7 @@ extern "C" bool process_handler(Process process_obj)
 			mov word ptr [jmp_val] , 0x1 ;
 			mov ax , code_seg ;
 			mov word ptr [jmp_val + 2] , ax ;
+			mov ss , ax ;
 
 			sti ;
 
@@ -107,6 +108,7 @@ kcall:
 			mov ax , cs ;
 			mov ds , ax ;
 			mov es , ax ;
+			mov ss , ax ;
 			sti ;
 		};
 
